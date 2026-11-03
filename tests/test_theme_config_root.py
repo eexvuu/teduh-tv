@@ -104,7 +104,7 @@ class ThemeConfigRootTest(unittest.TestCase):
         self.assertTrue(self.tv_calls(), "a theme whose config.json is an object still has to be pushed")
 
     def test_a_shipped_theme_still_reaches_the_tv(self):
-        shutil.copy2(ROOT / "themes" / "aurora" / "config.json", self.theme / "config.json")
+        shutil.copy2(ROOT / "themes" / "glass" / "config.json", self.theme / "config.json")
         result = self.run_theme()
         self.assertNotIn("is not a JSON object", result.stderr)
         self.assertTrue(self.tv_calls(), "the pictures in themes/ are pushed the way they always were")
