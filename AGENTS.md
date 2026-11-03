@@ -34,6 +34,8 @@ dengan ya/tidak atau dengan membaca layar TV. Jangan minta pengguna mengetik per
      Pengaturan TV; jangan diubah lewat ADB.
    - **Cek:** pengguna menekan Home, launcher menanyakan kartu "Prayer Times" sekali, pengguna memilih
      **Show**, lalu kartu dibuka dan jadwal hari ini tampil dengan nama kota yang benar.
+   - **Jadwal di Home:** tambahkan `"game_day": "com.majnioui.tv.prayer"` ke `config.json` tema (langkah 4)
+     supaya jadwal hari ini dan hitung mundur ke sholat berikutnya tampil di kanan atas Home, tanpa membuka add-on.
 4. **Foto sendiri sebagai latar:**
    - Tanyakan apakah pengguna mau memasang foto sendiri, dan minta mereka menaruh fotonya di satu folder
      di komputer. Jangan mengambil foto dari internet tanpa izin.
@@ -41,11 +43,23 @@ dengan ya/tidak atau dengan membaca layar TV. Jangan minta pengguna mengetik per
      `wallpaper.jpg` bawaannya, lalu taruh foto pengguna di `tema-saya/wallpapers/`: JPEG, PNG atau WebP,
      maksimal 100 foto, masing-masing maksimal 10 MB, nama file hanya huruf, angka, `_`, `-` dan titik.
      Ganti nama file yang tidak memenuhi aturan itu.
-   - Di `config.json` tema itu, isi `"wallpaper": true`, `"wallpaper_rotation_minutes": 30` dan
-     `"wallpaper_dim": 40`. Tanyakan berapa menit sekali foto berganti dan urutan aplikasi di dock.
-     Semua kuncinya ada di `themes/README.md`.
+   - Di `config.json` tema itu, isi `"wallpaper": true`, `"wallpaper_rotation_minutes": 30`,
+     `"wallpaper_dim": 15`, `"cinematic_home": false` dan `"ambient_glow": false` (plus `"game_day"` dari
+     langkah 3). `cinematic_home` menutupi foto dengan gambar aplikasi yang sedang dipilih, dan glow mewarnai
+     foto, jadi keduanya dimatikan supaya foto terlihat jelas. Jadwal sholat di Home ditulis dengan bayangan
+     teks tanpa kartu, jadi foto cukup digelapkan sedikit. Tanyakan berapa menit sekali foto berganti dan urutan
+     aplikasi di dock. Semua kuncinya ada di `themes/README.md`.
+   - Foto sebaiknya minimal 1920×1080; foto kecil terlihat buram di TV. Di TV, foto bisa dipilih satu per
+     satu lewat ikon gear → tahan OK → **Setelan antarmuka** → **Wallpaper**.
    - Kirim temanya dengan `tools/theme.sh tema-saya` (Windows: `tools/theme.ps1 -TvHost <ip> tema-saya`).
    - **Cek:** Home mulai ulang dalam beberapa detik dan foto pertama tampil di belakang dock.
+   - **Foto Latar** (kelola foto dari TV, tanpa laptop): tanyakan apakah pengguna mau menambah, memilih dan
+     menghapus foto sendiri lewat remote dan HP. Kalau ya, build dan pasang `addons/photos/` dengan langkah di
+     `addons/photos/README.md`, lalu jalankan sekali
+     `pm grant id.teduh.photos android.permission.WRITE_SECURE_SETTINGS` dan tambahkan `"id.teduh.photos"` ke
+     `dock_apps`. Jelaskan ke pengguna: buka Foto Latar → **Tambah dari HP** → pindai QR dengan HP di Wi-Fi
+     yang sama. Ingatkan bahwa mengirim tema lagi dari laptop mengganti semua foto di TV, termasuk yang dari HP.
+     **Cek:** Foto Latar membuka galeri berisi foto tema (bukan pesan izin).
 5. **Serah terima:** minta pengguna mencoba remote asli (Home, Input HDMI, memutar video, tombol mic).
    Beri tahu cara mengembalikan semuanya (`tools/restore.sh` atau `tools/restore.ps1`) dan tutup ADB
    seperti yang dijelaskan di PROMPT.md.
@@ -107,6 +121,7 @@ pengguna (`tema-saya/`) ada di `.gitignore` dan tidak boleh di-commit.
 | `docs/` | `docs/TROUBLESHOOTING.md`, kontrak kartu modul (`docs/modules.md`), `docs/devices/` dan [workflows](#workflows). |
 | `launcher/` | Launcher, paket `com.gathin.tvhome`: Java biasa, `minSdk` 26, tanpa izin `INTERNET`. |
 | `addons/prayer-times/` | Add-on waktu sholat (kartu modul), proyek Gradle tersendiri. |
+| `addons/photos/` | Add-on Foto Latar: tambah foto latar dari HP lewat QR, pilih atau hapus dengan remote. |
 | `themes/` | `default/` dan `glass/`. Semua kunci tema ada di `themes/README.md`. |
 | `tools/` | Klien ADB (`tv.py`) dan skrip debloat, restore dan tema, masing-masing dengan kembaran PowerShell. |
 | `tests/` | Suite `unittest` Python: format daftar, tema, add-on, Home guard, tools terhadap TV palsu. |
@@ -130,7 +145,7 @@ Langkah-langkah di `docs/workflows/` (bahasa Inggris, dari CleanYourTV):
 | Tes, seperti di CI | `tools/venv/bin/python -m unittest discover -s tests -v` setelah `python3 -m venv tools/venv` dan `tools/venv/bin/pip install -r tools/requirements.txt`. Di `main`, CI memasang `CLEANYOURTV_STRICT=1`. Di Windows, tes yang menjalankan `tools/*.sh` dilewati karena butuh shell POSIX; CI menjalankannya. |
 | Launcher, kalau `launcher/` diubah | JDK 17, Android SDK platform 34, build-tools 34.0.0. Di `launcher/`: `./gradlew --no-daemon testReleaseUnitTest lintRelease assembleRelease`. Lint harus nol error. |
 | Batas ukuran APK | APK rilis launcher harus di bawah 589,824 B (576 KB). Inilah janji "ringan" Teduh. |
-| Add-on, kalau `addons/` diubah | Di `addons/prayer-times/`: `./gradlew assembleRelease`. |
+| Add-on, kalau `addons/` diubah | Di `addons/prayer-times/` dan `addons/photos/`: `./gradlew assembleRelease`. |
 
 ## Aturan tetap
 

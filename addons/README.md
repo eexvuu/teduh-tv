@@ -10,6 +10,7 @@ the core bigger or change how it behaves. You install an add-on only if you want
 | Add-on | What it does | Author | Tested on | Permissions | Screenshot |
 |---|---|---|---|---|---|
 | [Prayer Times](prayer-times/) | Today's prayer times for one city from Aladhan (no key), the next prayer with a countdown, Gregorian and Hijri dates | [@majnioui](https://github.com/majnioui) | Xiaomi TV (MiTV-MOOR2), Google TV 11 | `INTERNET`, start at boot, exact alarm, overlay (only with reminders on) | <img src="prayer-times/screenshot.jpg" width="240" alt="Prayer Times on a TV"> |
+| [Foto Latar](photos/) | Home wallpaper photos from the TV: add from a phone by QR code (local upload page), show one now, delete, back to rotating | Teduh TV | Android TV 14 emulator | `INTERNET` (local upload page only), `WRITE_SECURE_SETTINGS` (granted over ADB, to reach the launcher's photo collection) | <img src="photos/screenshot.jpg" width="240" alt="Foto Latar on a TV"> |
 
 A widget, an info tile, a storage or smart-home card: if it can live as its own small app, it can live
 here. See the rules below.

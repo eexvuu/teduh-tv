@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+    <!-- Only for the phone upload page, served on the home network while "Tambah dari HP" is open. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- The launcher's ThemeProvider only answers callers holding it. Granted over ADB when the add-on is installed
+         (pm grant id.teduh.photos android.permission.WRITE_SECURE_SETTINGS); the add-on writes no setting with it. -->
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- Android 11+ package visibility: the launcher's provider. -->
+    <queries>
+        <package android:name="com.gathin.tvhome" />
+    </queries>
+
+    <application
+        android:label="Foto Latar"
+        android:icon="@drawable/icon"
+        android:banner="@drawable/banner"
+        android:theme="@android:style/Theme.Material.NoActionBar.Fullscreen"
+        android:allowBackup="false">
+
+        <activity android:name=".MainActivity" android:exported="true" android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+            <!-- Module card for the launcher's dock (docs/specs/card.md). -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.gathin.tvhome.category.DOCK_CARD" />
+            </intent-filter>
+            <meta-data android:name="com.gathin.tvhome.card" android:resource="@xml/module_card" />
+        </activity>
+
+        <activity android:name=".UploadActivity" android:exported="false" android:screenOrientation="landscape" />
+    </application>
+</manifest>

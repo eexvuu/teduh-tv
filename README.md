@@ -50,8 +50,8 @@ Foto dari proyek <a href="https://github.com/Gathin23/cleanyourtv">CleanYourTV</
 |---|---|
 | **Debloat** | Mematikan telemetri, layanan iklan, baris konten berbayar, dan aplikasi bawaan yang tidak dipakai. Aplikasi yang dipakai keluarga (YouTube, Netflix, Vidio, Chromecast, asisten suara) ditanyakan dulu. |
 | **Launcher** | Dock berisi aplikasi favorit, grid aplikasi, tombol Input HDMI, Wi-Fi, Pengaturan, jam, dan screensaver jam. Tombol remote tetap berfungsi. |
-| **Waktu sholat** | Add-on [`addons/prayer-times`](addons/prayer-times/): metode **Kemenag RI** (Subuh 20°, Isya 18°), mazhab Syafi'i, untuk kota mana pun di Indonesia (WIB, WITA, WIT). Bisa ditambah pengingat saat masuk waktu. Tampil sebagai kartu di Home. |
-| **Foto sendiri** | Foto keluarga atau pemandangan diputar bergantian sebagai latar Home. Foto besar dari HP dikecilkan otomatis oleh launcher. Foto tetap di TV dan di komputer Anda, tidak masuk repo. |
+| **Waktu sholat** | Add-on [`addons/prayer-times`](addons/prayer-times/): metode **Kemenag RI** (Subuh 20°, Isya 18°), mazhab Syafi'i, untuk kota mana pun di Indonesia (WIB, WITA, WIT). Jadwal hari ini dan hitung mundur ke sholat berikutnya tampil langsung di Home, di kanan atas, tanpa membuka aplikasi. Bisa ditambah pengingat saat masuk waktu. |
+| **Foto sendiri** | Foto keluarga atau pemandangan diputar bergantian sebagai latar Home. Foto besar dari HP dikecilkan otomatis oleh launcher. Foto tetap di TV dan di komputer Anda, tidak masuk repo. Dengan add-on [`addons/photos`](addons/photos/) (Foto Latar), foto bisa ditambah dari HP lewat kode QR, dipilih atau dihapus pakai remote, tanpa laptop. |
 
 ## TV yang didukung
 
@@ -105,6 +105,7 @@ Pengaturan → Aplikasi di TV bisa menyalakan kembali aplikasinya. Detailnya ada
 | [`AGENTS.md`](AGENTS.md) | Panduan untuk Claude: urutan pemasangan dan aturan keselamatannya. |
 | [`launcher/`](launcher/) | Launcher (Java, `minSdk` 26). |
 | [`addons/prayer-times/`](addons/prayer-times/) | Add-on waktu sholat. |
+| [`addons/photos/`](addons/photos/) | Add-on Foto Latar: kelola foto latar dari TV dan HP. |
 | [`examples/`](examples/) | Daftar debloat per model TV. |
 | [`themes/`](themes/) | Tema: warna, dock, wallpaper. Panduan kuncinya ada di [`themes/README.md`](themes/README.md). |
 | [`tools/`](tools/) | Klien ADB (`tv.py`) dan skrip debloat, restore, dan tema. |
