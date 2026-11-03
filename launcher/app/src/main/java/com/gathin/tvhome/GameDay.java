@@ -103,9 +103,11 @@ final class GameDay {
             io.execute(() -> {
                 List<Object[]> rows = new ArrayList<>();
                 try (Cursor c = ctx.getContentResolver().query(uri, COLUMNS, null, null, null)) {
+                    // Optional, so add-ons written before it keep working: the day as a table (Turn.table).
+                    int table = c == null ? -1 : c.getColumnIndex("table");
                     while (c != null && c.moveToNext()) {
                         rows.add(new Object[] {c.getString(0), c.getString(1), c.getLong(2), c.getLong(3), c.getInt(4),
-                                c.getString(5), c.getInt(6)});
+                                c.getString(5), c.getInt(6), table < 0 ? null : c.getString(table)});
                     }
                 } catch (RuntimeException gone) {
                     // Uninstalled or crashed mid-query: keep what is on screen.
@@ -142,7 +144,9 @@ final class GameDay {
             if (start < 0 || end <= start) continue;
             String word = r[1] instanceof String ? (String) r[1] : "";
             int colour = r[4] instanceof Number ? ((Number) r[4]).intValue() : 0xFFFFFFFF;
-            out.add(new Turn((String) r[0], word, start, end, colour));
+            Turn t = new Turn((String) r[0], word, start, end, colour);
+            if (r.length > 7 && r[7] instanceof String) t.table = (String) r[7];
+            out.add(t);
         }
         return out;
     }
@@ -165,6 +169,11 @@ final class GameDay {
         /** ARGB, for the short bar. */
         final int colour;
         final boolean f1;
+        /**
+         * Optional "table" column: "Subuh 04:06|Terbit 05:22|…", one column per cell, name over value, the cell equal
+         * to word in colour with the countdown under it. Home then shows the panel as that table at the right.
+         */
+        String table = "";
 
         Turn(String topLine, String word, long startMs, long endMs, int colour) {
             this(topLine, word, startMs, endMs, colour, false);

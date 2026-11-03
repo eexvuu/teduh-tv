@@ -9,6 +9,22 @@
     <string name="prayer_isha">Isha</string>
     <string name="prayer_in">%1$s in %2$s</string>
     <string name="prayer_tomorrow">%1$s tomorrow</string>
+    <!-- Home's panel (TurnsProvider): the header over the day's times, %1$s the place. -->
+    <string name="home_header">Prayer times %1$s</string>
+    <string-array name="hijri_months">
+        <item>Muharram</item>
+        <item>Safar</item>
+        <item>Rabi al-Awwal</item>
+        <item>Rabi al-Thani</item>
+        <item>Jumada al-Ula</item>
+        <item>Jumada al-Akhirah</item>
+        <item>Rajab</item>
+        <item>Shaban</item>
+        <item>Ramadan</item>
+        <item>Shawwal</item>
+        <item>Dhu al-Qadah</item>
+        <item>Dhu al-Hijjah</item>
+    </string-array>
     <string name="prayer_alert_badge">PRAYER TIME</string>
     <string name="prayer_alert_title">Prayer time: %1$s</string>
     <string name="prayer_alert_dismiss">%1$ds</string>

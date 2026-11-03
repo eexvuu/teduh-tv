@@ -19,6 +19,13 @@ countdown to it, plus today's Gregorian and Hijri dates. Each prayer has its Ara
   enabled (`true`), an unobtrusive, frameless compact card appears at the top-right corner of the screen
   displaying the localized prayer name, Arabic script, time, and city, accompanied by a single notification chime.
   It dismisses automatically after 10 seconds or immediately on any remote button press.
+- **On Home, without opening it**: the add-on publishes today's times to the launcher's panel (the `game_day`
+  contract in [docs/modules.md](../../docs/modules.md), with its `table` column): at the right under the top
+  buttons, "Waktu Sholat Jakarta • 23 Jumadil Awal 1448 H" over the six times, name over time, the next prayer
+  in amber with its countdown under it. The Hijri date is Aladhan's, so it can be a day off the Kemenag isbat
+  around the start of a month. Turn it on with `"game_day": "com.majnioui.tv.prayer"` in a theme's
+  `config.json` or the launcher's `config.xml`. It answers from the saved times and fetches once in the
+  background when they are not today's.
 - It reads Aladhan when the page opens and again after midnight. The countdown updates every minute.
   Offline, the last times stay on screen.
 - 24-hour times, localized prayer names and strings for English, Indonesian (`values-in`), and Arabic (`values-ar`).

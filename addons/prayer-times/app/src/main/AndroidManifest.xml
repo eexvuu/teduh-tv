@@ -17,6 +17,13 @@
         android:theme="@android:style/Theme.Material.NoActionBar.Fullscreen"
         android:allowBackup="false">
 
+        <!-- Today's times under the clock on Home (game_day: "com.majnioui.tv.prayer", docs/modules.md). -->
+        <meta-data android:name="com.gathin.tvhome.games" android:value="com.majnioui.tv.prayer.turns" />
+        <provider
+            android:name=".TurnsProvider"
+            android:authorities="com.majnioui.tv.prayer.turns"
+            android:exported="true" />
+
         <activity android:name=".MainActivity" android:exported="true" android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

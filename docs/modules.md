@@ -141,6 +141,7 @@ the `game_day` key (`config.xml` or a theme); there is no card prompt for it.
    | `colour` | integer | ARGB of the short bar. |
    | `calendar` | text | Where the row came from; not shown. |
    | `turn_seconds` | integer | Seconds per turn, 10 to 120; anything else means 30. Read from the first row. |
+   | `table` | text, optional | Cells split by `\|`, each a name and a value split at the last space: `Subuh 04:06\|Terbit 05:26\|…`. With it the turn shows at the right under the top buttons, `top_line` as its header over one column per cell (name over value), the cell equal to `word` in `colour` with the countdown under it. No bar and no card, so the wallpaper stays in view. The prayer-times add-on uses it. |
 
    An empty cursor hides the panel. Keep it to what Home shows anyway: the provider is exported without a
    permission, so it must hold no links, accounts or other private data.

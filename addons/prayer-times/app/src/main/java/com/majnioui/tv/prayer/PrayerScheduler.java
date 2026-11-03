@@ -28,8 +28,11 @@ public class PrayerScheduler {
     public static final String EXTRA_PRAYER_TIME = "prayer_time";
     public static final String EXTRA_PLACE = "place";
 
-    private static final String PREFS_NAME = "prayer_prefs";
-    private static final String KEY_DATE = "cached_date";
+    static final String PREFS_NAME = "prayer_prefs";
+    static final String KEY_DATE = "cached_date";
+    /** One background fetch at a time, and at most one try every 15 minutes (Home asks often). */
+    private static boolean fetching;
+    private static long lastTry;
     private static final String KEY_PLACE = "place";
 
     public static final String[] NAMES = {"Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"};
@@ -69,12 +72,26 @@ public class PrayerScheduler {
             editor.putInt("min_" + names[i], minutes[i]);
         }
         editor.apply();
+        TurnsProvider.changed(ctx);
 
         if (ctx.getResources().getBoolean(R.bool.reminders)) {
             scheduleNext(ctx);
         } else {
             cancel(ctx);
         }
+    }
+
+    /** Aladhan's Hijri date for the day (data.date.hijri), kept for the header of Home's panel (TurnsProvider). */
+    static void saveHijri(Context ctx, JSONObject data) {
+        JSONObject date = data.optJSONObject("date");
+        JSONObject hijri = date == null ? null : date.optJSONObject("hijri");
+        if (hijri == null) return;
+        JSONObject month = hijri.optJSONObject("month");
+        ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit()
+                .putString("hijri_day", hijri.optString("day"))
+                .putInt("hijri_month", month == null ? 0 : month.optInt("number"))
+                .putString("hijri_year", hijri.optString("year"))
+                .apply();
     }
 
     public static void cancel(Context ctx) {
@@ -222,10 +239,18 @@ public class PrayerScheduler {
             cancel(ctx);
             return;
         }
+        fetchToday(ctx);
+    }
 
+    /** Today's times from Aladhan in the background, saved for the app, the reminders and Home's panel. */
+    static synchronized void fetchToday(Context ctx) {
+        long now = System.currentTimeMillis();
+        if (fetching || now - lastTry < 15 * 60_000L) return;
+        fetching = true;
+        lastTry = now;
+        final Context appContext = ctx.getApplicationContext();
         new Thread(() -> {
             try {
-                Context appContext = ctx.getApplicationContext();
                 String day = new SimpleDateFormat("yyyy-MM-dd", Locale.ROOT).format(new Date());
                 String dayParam = new SimpleDateFormat("dd-MM-yyyy", Locale.ROOT).format(new Date());
                 String url = "https://api.aladhan.com/v1/timings/" + dayParam
@@ -259,10 +284,15 @@ public class PrayerScheduler {
                     minutes[i] = Integer.parseInt(v.substring(0, 2)) * 60 + Integer.parseInt(v.substring(3, 5));
                 }
 
+                saveHijri(appContext, data);
                 saveTimingsAndSchedule(appContext, day, NAMES, times, minutes, appContext.getString(R.string.place));
                 Log.i(TAG, "Background fetch and schedule successful for " + day);
             } catch (Exception e) {
                 Log.w(TAG, "Background fetch error: " + e);
+            } finally {
+                synchronized (PrayerScheduler.class) {
+                    fetching = false;
+                }
             }
         }).start();
     }

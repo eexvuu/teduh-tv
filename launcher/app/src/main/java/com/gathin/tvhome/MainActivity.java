@@ -29,6 +29,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.Typeface;
 import android.media.tv.TvContract;
 import android.media.tv.TvInputInfo;
 import android.media.tv.TvInputManager;
@@ -2794,7 +2795,15 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         long since = SystemClock.elapsedRealtime() - rotationStart;
         int on = GameDay.current(turns.size(), since, seconds);
         GameDay.Turn t = turns.get(on);
-        if (t.f1) {
+        boolean table = !t.f1 && !t.table.isEmpty();
+        tableMode(table);
+        if (table) {
+            // The countdown under the cell; none in the minute it is on (an adhan, a kick-off): the colour says it.
+            showTable(t, GameDay.live(t, now) ? ""
+                    : getString(R.string.race_next, "", RaceWeekend.countdown(getResources(), GameDay.until(t, now))).trim());
+            raceSessions.setVisibility(View.GONE);
+            racePanel.setVisibility(View.VISIBLE);
+        } else if (t.f1) {
             raceBar.setBackgroundResource(R.drawable.race_bar);
             raceSessions.setVisibility(View.VISIBLE);
             updateRace();
@@ -2818,6 +2827,65 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         }
         showPager(turns.size(), on);
         if (turns.size() > 1 && !stopped) handler.postDelayed(turnTick, GameDay.delayToNextTurn(since, seconds));
+    }
+
+    /** The day's table from an add-on (Turn.table), built once a minute with the clock. */
+    private LinearLayout turnTable;
+
+    /**
+     * A turn with a table sits at the right, under the top buttons and level with their edge, as a header over one
+     * column per cell, with no card behind it: the wallpaper stays in view and a shadow keeps the text readable.
+     */
+    private void tableMode(boolean on) {
+        FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) racePanel.getLayoutParams();
+        int gravity = Gravity.TOP | (on ? Gravity.END : Gravity.START);
+        if (lp.gravity == gravity) return;
+        lp.gravity = gravity;
+        lp.setMarginEnd(lp.getMarginStart());
+        racePanel.setLayoutParams(lp);
+        ((LinearLayout) racePanel).setGravity(on ? Gravity.END : Gravity.START);
+        raceBar.setVisibility(on ? View.GONE : View.VISIBLE);
+        raceHeadline.setVisibility(on ? View.GONE : View.VISIBLE);
+        if (turnTable != null) turnTable.setVisibility(on ? View.VISIBLE : View.GONE);
+        raceKicker.setShadowLayer(on ? 4 * density : 0, 0, on ? density : 0, 0x99000000);
+    }
+
+    private void showTable(GameDay.Turn t, String in) {
+        raceKicker.setText(t.topLine);
+        if (turnTable == null) {
+            turnTable = new LinearLayout(this);
+            turnTable.setBaselineAligned(false);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(-2, -2);
+            lp.topMargin = Math.round(10 * density);
+            ((LinearLayout) racePanel).addView(turnTable, 1, lp);
+        }
+        turnTable.removeAllViews();
+        for (String cell : t.table.split("\\|")) {
+            int sp = cell.lastIndexOf(' ');
+            if (sp < 1) continue;
+            boolean next = cell.equals(t.word);
+            LinearLayout col = new LinearLayout(this);
+            col.setOrientation(LinearLayout.VERTICAL);
+            col.addView(tableText(cell.substring(0, sp), 13, next ? t.colour : 0xB3FFFFFF, next));
+            col.addView(tableText(cell.substring(sp + 1), 22, next ? t.colour : 0xFFFFFFFF, next));
+            if (next && !in.isEmpty()) col.addView(tableText(in, 11, t.colour, false));
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(-2, -2);
+            if (turnTable.getChildCount() > 0) lp.setMarginStart(Math.round(22 * density));
+            turnTable.addView(col, lp);
+        }
+    }
+
+    private TextView tableText(String text, int sp, int colour, boolean bold) {
+        TextView v = new TextView(this);
+        v.setText(text);
+        v.setTextSize(sp);
+        v.setTextColor(colour);
+        v.setTypeface(raceKicker.getTypeface(), bold ? Typeface.BOLD : Typeface.NORMAL);
+        v.setShadowLayer(4 * density, 0, density, 0xB3000000);
+        v.setSingleLine(true);
+        // The column fills its width with each line (a vertical LinearLayout's default): centre the text in it.
+        v.setGravity(Gravity.CENTER_HORIZONTAL);
+        return v;
     }
 
     /** One dot per turn, the one on screen bright; none for a single turn. */

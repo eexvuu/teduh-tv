@@ -2,13 +2,28 @@
 <resources>
     <string name="app_name">Jadwal Sholat</string>
     <string name="prayer_fajr">Subuh</string>
-    <string name="prayer_sunrise">Syuruq</string>
+    <string name="prayer_sunrise">Terbit</string>
     <string name="prayer_dhuhr">Dzuhur</string>
     <string name="prayer_asr">Ashar</string>
     <string name="prayer_maghrib">Maghrib</string>
     <string name="prayer_isha">Isya</string>
     <string name="prayer_in">%1$s dalam %2$s</string>
     <string name="prayer_tomorrow">%1$s besok</string>
+    <string name="home_header">Waktu Sholat %1$s</string>
+    <string-array name="hijri_months">
+        <item>Muharram</item>
+        <item>Safar</item>
+        <item>Rabiul Awal</item>
+        <item>Rabiul Akhir</item>
+        <item>Jumadil Awal</item>
+        <item>Jumadil Akhir</item>
+        <item>Rajab</item>
+        <item>Syakban</item>
+        <item>Ramadan</item>
+        <item>Syawal</item>
+        <item>Zulkaidah</item>
+        <item>Zulhijah</item>
+    </string-array>
     <string name="prayer_alert_badge">WAKTU SHOLAT</string>
     <string name="prayer_alert_title">Waktu %1$s</string>
     <string name="prayer_alert_dismiss">%1$ds</string>
