@@ -4,7 +4,7 @@ A theme is a folder in `themes/<name>/` that changes the launcher's look without
 This guide is the prompt to give your coding agent (it needs shell access to the TV). Follow it in
 order and you end with a theme that can be shared as a pull request.
 
-Reference: [`themes/README.md`](README.md) lists every key, and [`themes/retro/`](retro/) is a
+Reference: [`themes/README.md`](README.md) lists every key, and [`themes/retro/`](https://github.com/Gathin23/cleanyourtv/tree/main/themes/retro/) is a
 complete example.
 
 ## 0. Before you start
@@ -105,7 +105,7 @@ the name show.
 Add one row to the table in [`themes/README.md`](README.md):
 
 ```markdown
-| [`retro/`](retro/) | What it looks like in one line | <img src="retro/screenshot.jpg" width="320" alt="retro theme"> |
+| [`retro/`](https://github.com/Gathin23/cleanyourtv/tree/main/themes/retro/) | What it looks like in one line | <img src="retro/screenshot.jpg" width="320" alt="retro theme"> |
 ```
 
 Then bump the count in the Themes feature row of every front page that states it: `README.md` ("`N ship in

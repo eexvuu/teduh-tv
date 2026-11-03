@@ -43,13 +43,13 @@ from test_adb_closed import check  # noqa: E402
 from test_sabrina_cast_restart_note import bullets  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-README = (ROOT / "README.md").read_text(encoding="utf-8")
+README = (ROOT / "docs" / "GUIDE.md").read_text(encoding="utf-8")
 FAQ = (ROOT / "docs" / "faq.md").read_text(encoding="utf-8")
 TROUBLE = (ROOT / "docs" / "TROUBLESHOOTING.md").read_text(encoding="utf-8")
 SCRIPTS = (ROOT / "tools" / "disable.sh", ROOT / "tools" / "disable.ps1")
 HEADING = "Isn't ADB access a security hole?"
 SUMMARY = f"<summary><b>{HEADING}</b></summary>"
-LINK = "docs/TROUBLESHOOTING.md#connecting"
+LINK = "TROUBLESHOOTING.md#connecting"
 
 
 def flat(text):
@@ -121,7 +121,7 @@ class ReadmeShortAnswerTest(unittest.TestCase):
         self.assertEqual(sorted(short), [1, 2])
         self.assertIn("**Wireless debugging**", short[1])
         self.assertIn("`python3 tools/adb-closed.py <tv ip>` must say the port is closed", short[2])
-        self.assertIn("(docs/faq.md#isnt-adb-access-a-security-hole)", answer)
+        self.assertIn("(faq.md#isnt-adb-access-a-security-hole)", answer)
 
 
 class CloseUpStepsTest(unittest.TestCase):

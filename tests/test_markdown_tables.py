@@ -119,8 +119,8 @@ class ShippedPages(unittest.TestCase):
             for _, _, table_rows in tables(page.read_text(errors="replace")):
                 found += 1
                 rows += len(table_rows)
-        self.assertGreaterEqual(found, 400, f"only {found} tables found")
-        self.assertGreaterEqual(rows, 3000, f"only {rows} table rows found")
+        self.assertGreaterEqual(found, 250, f"only {found} tables found")
+        self.assertGreaterEqual(rows, 1500, f"only {rows} table rows found")
 
 
 class Rows(unittest.TestCase):

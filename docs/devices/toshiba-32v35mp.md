@@ -101,7 +101,7 @@ or installing an OTA was tested. DNS was unchanged.
 
 ## Bluetooth and low-memory observations
 
-The existing [Bluetooth add-on](../../addons/bluetooth-toggle/) opened the accessory-pairing screen
+The existing [Bluetooth add-on](https://github.com/Gathin23/cleanyourtv/tree/main/addons/bluetooth-toggle/) opened the accessory-pairing screen
 with `switch_on_open=false` and `close_after_seconds=0`. Opening it left the Bluetooth radio enabled;
 pairing a new accessory and Bluetooth audio were not tested.
 

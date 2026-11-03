@@ -145,7 +145,7 @@ disabled package stayed disabled, and Home and Wi-Fi came back each time. One da
 - **Live TV shortcut** set to `com.tcl.tv` via `launcher/app/src/main/res/values/config.xml` for this set
   (the built-in default targets a MediaTek package not present here). A rebuild needs that one-line edit,
   or `live_tv_package` in a pushed theme.
-- **Six-column layout + nature-calm wallpaper** via a personal theme merged from `themes/nature-calm`:
+- **Six-column layout + nature-calm wallpaper** via a personal theme merged from CleanYourTV's nature-calm theme:
   dock = Netflix, Prime Video, YouTube, JioHotstar, SmartTube, Sun NXT. Twelve calm nature photos
   (Wikimedia Commons, CC BY/CC BY-SA) rotate every 5 minutes with place + photographer captions, over a
   frosted-glass dock at 40% opacity; `wallpaper_true_color` is on (the set has ~2.4 GB RAM). The merge

@@ -82,7 +82,7 @@ TCL 43P7K (G10 firmware), and Netflix, YouTube, Prime Video and TV send the same
 4077 here, 83 on that firmware. Do **not** also enable `InputKeyService`, because it reads `app_keys` too and every
 app button would open its app twice.
 
-The theme used on this unit (`config.json`, with `themes/aurora/wallpaper.jpg` as `wallpaper.jpg`):
+The theme used on this unit (`config.json`, with the wallpaper of CleanYourTV's aurora theme as `wallpaper.jpg`):
 
 ```json
 {

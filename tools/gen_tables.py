@@ -256,7 +256,7 @@ def stats(text, entries, root):
     return text
 
 
-OWNED = ("README.md", "examples/README.md", "tools/readme_stats.py")
+OWNED = ("examples/README.md",)
 # The translated READMEs that carry the brand block too, written when the file is there - and the three
 # words each of them states its counts in, for the card's alt text ("345 TV models · 93 brands · 29
 # languages · ") and the "| **29 languages** |" row. The brand block is generated, so those numbers have
@@ -286,15 +286,12 @@ def render(root, texts=None):
     """{relative path: the text it should have}, for the files this script owns parts of.
 
     texts, if given, stands in for what those files hold now (by the same paths)."""
+    # Teduh: README.md is a short Indonesian page with no generated brand block, and there are no
+    # translated READMEs or README card; the only generated table is the one in examples/README.md.
     entries = load(root)
-    paths = list(OWNED) + [p for p in TRANSLATIONS if (texts or {}).get(p) or (root / p).is_file()]
-    now = {p: (texts or {}).get(p) or (root / p).read_text(encoding="utf-8") for p in paths}
-    out = {p: readme(now[p], entries, root, p, TRANSLATIONS.get(p, WORDS))
-           for p in ["README.md"] + paths[len(OWNED):]}
-    out["examples/README.md"] = between(now["examples/README.md"], "tv-table", examples_rows(entries),
-                                        "examples/README.md")
-    out["tools/readme_stats.py"] = stats(now["tools/readme_stats.py"], entries, root)
-    return out
+    path = "examples/README.md"
+    now = (texts or {}).get(path) or (root / path).read_text(encoding="utf-8")
+    return {path: between(now, "tv-table", examples_rows(entries), path)}
 
 
 def stale(root):
@@ -408,7 +405,7 @@ def redraw(root, font):
 
     This is the one place the script starts two other programs, and each of them answers a font that is not
     Fredoka's variable TTF - the Google Fonts zip renamed, a static single-weight file beside it - or a venv
-    without Pillow (requirements.txt has none; docs/workflows/press.md installs requirements-perf.txt) with
+    without Pillow (requirements.txt has none) with
     its own line and exit 1. With check=True that line was then followed by a CalledProcessError traceback
     that named the font path as a command, after the tables had already been rewritten: a run that read like
     "nothing was drawn" had changed two files, and the pictures it promised were not there.

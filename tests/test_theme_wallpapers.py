@@ -241,9 +241,7 @@ class ThemesTest(unittest.TestCase):
         singles = [r for r, _ in pictures(ROOT) if "/wallpapers/" not in r]
         collection = [r for r, _ in pictures(ROOT) if "/wallpapers/" in r]
         self.assertGreaterEqual(len(singles), 1, "no theme's single wallpaper was read")
-        self.assertGreaterEqual(len(collection), 1, "the collections were not read")
-        self.assertGreaterEqual(len({r.split("/")[1] for r in collection}), 1,
-                                "the collections of fewer than four themes were read")
+        # Teduh ships no theme with a wallpapers collection; a family photo theme stays in tema-saya.
 
     def test_the_rules_are_read_out_of_the_page_and_the_launcher(self):
         width, height = recipe_shape()

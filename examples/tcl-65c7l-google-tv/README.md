@@ -114,7 +114,7 @@ Package names of the apps on this unit:
 2. Add `"wallpaper": true,` to [config.json](config.json). Optionally add `"wallpaper_dim": 30` to darken it so tile names stay readable.
 3. Push it with the same `tools/theme.sh` command.
 
-For a rotating set, look at `themes/scenes`, or try a ready-made look with `TV_HOST=192.168.1.50 tools/theme.sh themes/aurora`.
+For a rotating set, look at CleanYourTV's scenes theme, or try a ready-made look with `TV_HOST=192.168.1.50 tools/theme.sh themes/glass`.
 `TV_HOST=192.168.1.50 tools/theme.sh --reset` goes back to plain black. Every key is described in `themes/README.md`.
 
 ## After a firmware update

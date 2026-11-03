@@ -35,7 +35,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from test_drift_check import FAKE_TV  # noqa: E402  (the simulated TV check.py already runs against)
 
 ROOT = Path(__file__).resolve().parents[1]
-README = ROOT / "README.md"
+README = ROOT / "docs" / "GUIDE.md"
 GUIDE = ROOT / "docs" / "firmware-updates.md"
 JOB = "## Exit codes, and a weekly job"
 CHECK = ROOT / "tools" / "check.py"
@@ -212,7 +212,7 @@ class CheckExitCodeTest(unittest.TestCase):
         self.assertEqual([], self.commands_sent())
 
     def test_the_readme_names_every_code_the_checker_can_return(self):
-        self.assertIn("(docs/firmware-updates.md)", "\n".join(readme_section(README.read_text(encoding="utf-8"))))
+        self.assertIn("(firmware-updates.md)", "\n".join(readme_section(README.read_text(encoding="utf-8"))))
         section = readme_section(GUIDE.read_text(encoding="utf-8"), JOB)
         self.assertIsNotNone(section, "%s is gone from docs/firmware-updates.md: the weekly job has no page" % JOB)
         self.assertGreaterEqual(len(paragraphs(section)), 4, "the section reads as nearly empty")

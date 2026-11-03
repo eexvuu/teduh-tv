@@ -72,20 +72,15 @@ normally, and `tile_menu`'s Move still works (hold OK, arrow keys carry the tile
 ### Bluetooth Connect add-on (optional, personal choice)
 
 The launcher has no built-in Bluetooth pill. On the tested unit the
-[Bluetooth Connect](../../addons/bluetooth-connect/) add-on (`com.gathin.btconnect`) was installed
+[Bluetooth Connect](https://github.com/Gathin23/cleanyourtv/tree/main/addons/bluetooth-connect/) add-on (`com.gathin.btconnect`) was installed
 as a personal convenience, purely by the owner's own choice and not part of the debloat or launcher
 steps above: it lists paired speakers with their connection state, and OK connects or disconnects.
 Skip this section entirely if you have no need for it; nothing else in this list or `config.json`
 depends on it. Verified on the tested unit: opening the tile shows the paired speaker with a working
 Connect row.
 
-```bash
-TV_HOST=<tv ip> addons/bluetooth-connect/install.sh
-```
-
-(On Windows, without a POSIX shell: build with `addons/bluetooth-connect`'s own `gradlew`, then
-`tools/b64push.py` the APK, `pm install -r` it over `tools/tv.py`, and grant
-`BLUETOOTH_CONNECT` with `pm grant com.gathin.btconnect android.permission.BLUETOOTH_CONNECT`.)
+Teduh TV does not ship this add-on; install it from the CleanYourTV repository with the steps in its own
+README there.
 
 ### YouTube remote button: hardware-level, cannot be remapped
 

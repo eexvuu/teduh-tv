@@ -97,7 +97,7 @@ is not in this repository. The parts that matter, for anyone building one:
   as numbers and known ones as names (`KEYCODE_NOTIFICATION` for the gear). `-T 1` starts at the newest
   line, so a restarted reader does not replay old presses.
 - **Opening apps from the background:** `appops set <package> SYSTEM_ALERT_WINDOW allow`, as
-  [`addons/wake-app`](../../addons/wake-app/build-and-install.sh) does.
+  [`addons/wake-app`](https://github.com/Gathin23/cleanyourtv/blob/main/addons/wake-app/build-and-install.sh) does.
 - **`APP_AUTO_START`** allowed and saved with `appops write-settings`, as for the launcher's helpers.
 - **Enable the service a few seconds after `pm install -r`.** Written straight after the install,
   `enabled_accessibility_services` came back empty: Android dropped the not-yet-registered service.

@@ -43,6 +43,6 @@ and `columns` to the file for your own apps.
 - **Projector settings over ADB.**
   `am start -n com.htc.luminaos/com.htc.luminaos.activity.MainSettingActivity` opens them without
   switching Home; HOME still returns to the Clean Your TV launcher.
-- **`tools/bench.py`.** This firmware logs `TvWindowManager: key event key = <KEYCODE>` instead of
+- **CleanYourTV's bench.py.** This firmware logs `TvWindowManager: key event key = <KEYCODE>` instead of
   `injectKeyEvent`. So `bench.py` does not measure the return to Home here, and times key response from
   just before the key is sent.

@@ -1,7 +1,7 @@
 # Troubleshooting
 
 Things that bit us or contributors, so they don't bite you. Commands use `tools/tv.py`; see the
-[README](../README.md#doing-it-by-hand) for setting it up.
+[README](GUIDE.md#doing-it-by-hand) for setting it up.
 
 ## Connecting
 
@@ -1315,7 +1315,7 @@ gone after every reboot and has to be started again from a debugging session you
 things fail silently when you do: the script must be detached from the `adb shell` session or it dies with
 it, and a supervisor must not start a second copy. Do not solve the reboot by leaving TCP ADB on so
 something local can restart it — port 5555 reachable from the LAN is a shell on the TV for anything on the
-network, which is why the closing step in [README](../README.md#questions-people-ask) turns it off.
+network, which is why the closing step in [README](GUIDE.md#questions-people-ask) turns it off.
 
 ## The Netflix button still opens Netflix, and a key helper never sees it (TCL UnionTV)
 
@@ -1354,7 +1354,7 @@ input service on a verified, signed partition.
 Fix: `inputs_cec_state_only` true in `config.xml` and rebuild, or `"inputs_cec_state_only": true` in a theme's
 `config.json`. Bare HDMI ports then show no state and only CEC device rows show theirs ("Steam Deck · HDMI 2",
 Connected). The trade: a device without CEC, such as a laptop, shows no state either. The switch and its
-screenshot: [docs/switches.md](switches.md).
+screenshot: [docs/switches.md](https://github.com/Gathin23/cleanyourtv/blob/main/docs/switches.md).
 
 ## Every clock stops after the power button, until a reboot (TCL UnionTV)
 
@@ -1604,7 +1604,7 @@ VH2 and do nothing from an app: Android's system-audio setting, volume nudges, a
 service. What does work is an app that keeps Network debugging on and connects to the TV's own ADB on
 `127.0.0.1:5555` with its own key, which the TV asks to allow once, and runs only that one command when
 an app opens or media starts while no `TYPE_HDMI_ARC`/`TYPE_HDMI_EARC` output is listed. The
-[Sony BRAVIA Launcher](https://github.com/udeshvirk/sony-bravia-launcher) in [`SHOWCASE.md`](../SHOWCASE.md)
+[Sony BRAVIA Launcher](https://github.com/udeshvirk/sony-bravia-launcher) in [`SHOWCASE.md`](https://github.com/Gathin23/cleanyourtv/blob/main/SHOWCASE.md)
 does this (`SoundbarWaker.java`). It is a trade-off: Network debugging stays on and the port is open on
 the home network, which the PROMPT's last step closes on purpose; on a set with `ro.adb.secure=0` an open port is a shell for anyone on the network, so only consider it where the TV asks to allow each new key. On Sony, an app can instead open the
 Home Theatre Control panel (`com.sony.dtv.HomeTheatreControl`) for about half a second, which also

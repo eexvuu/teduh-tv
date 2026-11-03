@@ -75,7 +75,7 @@ tools/theme.sh examples/anker-nebula-d2426
 ```
 
 Delete `wallpaper.jpg` and push again for the plain black background. `themes/` has ready-made looks
-(`tools/theme.sh themes/aurora`), and `tools/theme.sh --reset` goes back to the launcher's built-in defaults
+(CleanYourTV's aurora theme, pushed with `tools/theme.sh`), and `tools/theme.sh --reset` goes back to the launcher's built-in defaults
 (which drops this dock and greeting).
 
 ## Rebuild and reinstall the launcher

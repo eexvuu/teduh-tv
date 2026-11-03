@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- The city shown. Coordinates in decimal degrees. -->
-    <string name="latitude" translatable="false">33.5731</string>
-    <string name="longitude" translatable="false">-7.5898</string>
-    <string name="place" translatable="false">Casablanca</string>
+    <!-- Kota yang ditampilkan. Koordinat dalam derajat desimal. Teduh: default Jakarta; diganti saat
+         pemasangan sesuai kota pengguna (lihat AGENTS.md). Zona waktu diambil Aladhan dari koordinat. -->
+    <string name="latitude" translatable="false">-6.2088</string>
+    <string name="longitude" translatable="false">106.8456</string>
+    <string name="place" translatable="false">Jakarta</string>
     <!-- Aladhan's calculation method (https://aladhan.com/calculation-methods), e.g. 2 ISNA, 3 Muslim World
-         League, 4 Umm al-Qura, 5 Egyptian, 13 Turkey, 20 Indonesia (Kemenag), 21 Morocco. -->
-    <string name="method" translatable="false">21</string>
+         League, 4 Umm al-Qura, 5 Egyptian, 13 Turkey, 20 Indonesia (Kemenag), 21 Morocco.
+         Teduh: 20 = Kementerian Agama RI (Subuh 20 derajat, Isya 18 derajat), dicek di api.aladhan.com/v1/methods. -->
+    <string name="method" translatable="false">20</string>
     <!-- Juristic school for Asr: 0 Shafi, 1 Hanafi. -->
     <string name="school" translatable="false">0</string>
     <color name="accent">#2BB673</color>

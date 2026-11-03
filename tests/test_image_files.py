@@ -92,7 +92,7 @@ class RepositoryImages(unittest.TestCase):
     def test_the_walk_finds_the_repositorys_images(self):
         # themes/ requires a screenshot.jpg each, docs/ carries the card art: a walk that found
         # nothing would pass the test above without reading anything.
-        self.assertGreaterEqual(len(list(image_files(ROOT))), 80)
+        self.assertGreaterEqual(len(list(image_files(ROOT))), 40)
 
 
 class TheChecker(unittest.TestCase):

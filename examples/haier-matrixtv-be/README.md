@@ -33,7 +33,7 @@ TV_HOST=YOUR_TV_IP tools/theme.sh examples/haier-matrixtv-be
 ```
 
 The last line pushes the example dock and key mappings. A pushed theme replaces
-the previous theme; the owner used a private copy of `themes/scenes` with these
+the previous theme; the owner used a private copy of CleanYourTV's scenes theme with these
 mappings and `dock_glass: true` for the final look.
 
 To restore the recorded package and Home state, turn off CleanYourTV's

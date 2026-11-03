@@ -14,10 +14,10 @@ The launcher stays small on purpose, so pick the smallest home that fits:
 
 | Your idea | Where it goes |
 |---|---|
-| A TV model, a fix, a translation, a small switch that is off by default | A pull request here (sections 1 to 3 below); a new switch with a screenshot in [`docs/switches.md`](docs/switches.md) |
+| A TV model, a fix, a translation, a small switch that is off by default | A pull request here (sections 1 to 3 below); a new switch with a screenshot in [`docs/switches.md`](https://github.com/Gathin23/cleanyourtv/blob/main/docs/switches.md) |
 | A new look: colours, wallpaper, dock, columns | [`themes/`](themes/README.md), with a screenshot from a real TV |
 | A widget or tile that can be its own small app | [`addons/`](addons/README.md), as a module card with a screenshot from a real TV; it never touches `launcher/` |
-| A whole new launcher, a heavy restyle, a port to another platform | Your own repo, plus one row in [`SHOWCASE.md`](SHOWCASE.md) (section 4) |
+| A whole new launcher, a heavy restyle, a port to another platform | Your own repo, plus one row in [`SHOWCASE.md`](https://github.com/Gathin23/cleanyourtv/blob/main/SHOWCASE.md) (section 4) |
 
 Everything merged into `themes/` and `addons/` shows up on [cleanyour.tv/addons](https://cleanyour.tv/addons).
 
@@ -67,7 +67,7 @@ The launcher lives in `launcher/` and is deliberately small: plain Java, Android
 DynamicAnimation, no Kotlin, no Compose, no network. It targets TVs with 1 GB of RAM. A new switch follows
 [`docs/workflows/launcher-switch.md`](docs/workflows/launcher-switch.md), a new language
 [`docs/workflows/translation.md`](docs/workflows/translation.md), and a speed-up or slow-down is measured with
-[`docs/workflows/perf-ab.md`](docs/workflows/perf-ab.md). In every change:
+[`docs/workflows/perf-ab.md`](https://github.com/Gathin23/cleanyourtv/blob/main/docs/workflows/perf-ab.md). In every change:
 
 - No blur, no video backgrounds, no polling, no background services.
 - Anything that depends on a specific TV goes in `app/src/main/res/values/config.xml`, not in code.
@@ -151,7 +151,7 @@ you find a cleaner workaround, open an issue first.
 
 Built your own launcher, a port to another platform, or an add-on that is too big or too personal
 for the shared launcher? Put it in its own repository and add one row to
-[`SHOWCASE.md`](SHOWCASE.md). That page is the place for alternative launchers, forks with a
+[`SHOWCASE.md`](https://github.com/Gathin23/cleanyourtv/blob/main/SHOWCASE.md). That page is the place for alternative launchers, forks with a
 different look, and tools around the launcher; this repo keeps one small reference launcher and
 points at everything else. The rules for a row are on that page.
 

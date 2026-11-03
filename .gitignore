@@ -10,10 +10,6 @@ backup/
 # session screenshots and working notes (may show the Wi-Fi name or account avatar) stay local
 shots/
 work/
-# Perfetto traces from tools/trace.py: large, and they hold the TV's process list
-traces/
-# Results from tools/bench.py: result.json carries the address the run was given and the TV's fingerprint.
-bench-results/
 .DS_Store
 
 # Generated install bundles and JVM crash reports stay out of contributions.
@@ -21,3 +17,5 @@ bench-results/
 *.aab
 launcher/hs_err_pid*.log
 launcher/replay_pid*.log
+# Tema pribadi pengguna (foto keluarga, dll.) tidak ikut masuk repo
+tema-saya/

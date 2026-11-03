@@ -70,7 +70,7 @@ class PrivacyNextStepTest(unittest.TestCase):
         return [line.strip() for line in lines[start:end]]
 
     def test_the_write_step_is_the_readme_form(self):
-        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        readme = (ROOT / "docs" / "GUIDE.md").read_text(encoding="utf-8")
         found = re.search(r"`(TV_HOST=\S+ tools/venv/bin/python -I tools/privacy\.py)", readme)
         self.assertIsNotNone(found, "README.md no longer shows how to start tools/privacy.py")
         expected = re.sub(r"^TV_HOST=\S+", "TV_HOST=<tv ip>", found.group(1)) + " --write privacy.txt"
@@ -110,36 +110,6 @@ class RelayExampleTest(unittest.TestCase):
                 command = self.example(*args, **env)
                 self.assertEqual(problems(command), [])
                 self.assertTrue(command.startswith(found.group(1) + " 192.168.1.50"), command)
-
-
-class FakeDevice:
-    def shell(self, command, read_timeout_s=None):
-        return ""
-
-    def close(self):
-        pass
-
-
-class TraceNextStepTest(unittest.TestCase):
-    def test_the_report_step_runs_as_printed(self):
-        trace = load("trace")
-
-        def record_one(dev, setup, steps, package, path, run_shell=None):
-            Path(path).write_bytes(b"trace")
-            return 5
-
-        fakes = {"tv": types.SimpleNamespace(connect=FakeDevice), "bench": types.ModuleType("bench")}
-        out = io.StringIO()
-        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(sys.modules, fakes), \
-                mock.patch.object(sys, "path", list(sys.path)), \
-                mock.patch.object(trace, "record_one", record_one), contextlib.redirect_stdout(out):
-            folder = os.path.join(tmp, "before")
-            trace.main(["nav", "--runs", "1", "--out", folder])
-        found = re.search(r"^next: (.+?)   \(see tools/trace\.md\)$", out.getvalue(), re.M)
-        self.assertIsNotNone(found, out.getvalue())
-        command = found.group(1)
-        self.assertEqual(command, f"{VENV_PYTHON} -I tools/trace_report.py {folder}")
-        self.assertEqual(problems(command.replace(folder, "traces/before")), [])
 
 
 if __name__ == "__main__":

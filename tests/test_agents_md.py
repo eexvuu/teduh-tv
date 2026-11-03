@@ -121,7 +121,7 @@ class AgentsPathsTest(unittest.TestCase):
     def test_it_names_paths_at_all(self):
         # A parser that silently finds nothing would make the test above pass for any text.
         paths = [p for _, p in named_paths()]
-        for expected in ("PROMPT.md", "tools/disable.sh", ".github/maintainer/MAINTAINER.md", "examples/README.md"):
+        for expected in ("PROMPT.md", "tools/disable.sh", "addons/prayer-times/README.md", "examples/README.md"):
             self.assertIn(expected, paths)
 
 
@@ -169,7 +169,7 @@ class AgentsNumbersTest(unittest.TestCase):
 
 class AgentsEntryPointsTest(unittest.TestCase):
     def test_claude_and_gemini_import_agents_md(self):
-        for name in ("CLAUDE.md", "GEMINI.md"):
+        for name in ("CLAUDE.md",):
             with self.subTest(file=name):
                 lines = (ROOT / name).read_text(encoding="utf-8").split("\n")
                 self.assertIn("@AGENTS.md", [l.strip() for l in lines], f"{name} must import AGENTS.md")

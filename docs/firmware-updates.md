@@ -1,6 +1,6 @@
 # After a firmware update
 
-[Back to the README](../README.md#after-a-firmware-update)
+[Back to the README](GUIDE.md#after-a-firmware-update)
 
 An update installs over the cleaned-up system: the listed packages come back, Home goes to the
 stock launcher, and new preloads appear that no list mentions. Nothing else here notices, so
@@ -10,10 +10,10 @@ compare the TV with the list you applied.
 
 The check and `--fix` reach the TV over network ADB. If you closed ADB as
 [Isn't ADB access a security hole?](faq.md#isnt-adb-access-a-security-hole) describes, open it again first: USB
-debugging, and Network/ADB debugging if the TV has it, back on as in [Quick start](../README.md#quick-start)
+debugging, and Network/ADB debugging if the TV has it, back on as in [Quick start](GUIDE.md#quick-start)
 step 1. On a TV whose port 5555 only opens through Wireless debugging, switch that on as well and pair
 it again with the stock `adb`. From there either route works: `adb tcpip 5555`, as in
-[Doing it by hand](../README.md#doing-it-by-hand), which usually lasts only until the TV reboots, or
+[Doing it by hand](GUIDE.md#doing-it-by-hand), which usually lasts only until the TV reboots, or
 keeping 5555 closed and checking over the paired transport, which the paragraph after the command below
 describes.
 Closing revoked this computer's authorisation, so the 5555 route asks "Allow USB debugging?" on the TV

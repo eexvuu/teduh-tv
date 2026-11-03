@@ -82,11 +82,11 @@ class TheRepository(unittest.TestCase):
     def test_the_walk_reads_the_tree(self):
         """The sweep cannot pass by reading nothing: pin what it walks and what it finds."""
         pages = list(markdown_files(ROOT))
-        self.assertGreaterEqual(len(pages), 300, "the markdown walk found too few pages")
+        self.assertGreaterEqual(len(pages), 200, "the markdown walk found too few pages")
         fences = 0
         for page in pages:
             fences += len(blocks(page.read_text(encoding="utf-8", errors="replace")))
-        self.assertGreaterEqual(fences, 600, "the fence reader found too few blocks")
+        self.assertGreaterEqual(fences, 300, "the fence reader found too few blocks")
 
 
 class TheReader(unittest.TestCase):

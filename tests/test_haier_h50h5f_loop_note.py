@@ -15,7 +15,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 TROUBLE = ROOT / "docs" / "TROUBLESHOOTING.md"
-README = ROOT / "README.md"
+README = ROOT / "docs" / "GUIDE.md"
 FAQ = ROOT / "docs" / "faq.md"
 AQUA = ROOT / "examples" / "aqua-matrixtv-ee-50" / "debloat.txt"
 TITLE = "- **The TV restarts in a loop after a debloat**"
@@ -108,7 +108,7 @@ class ReadmeSafetyAnswerTest(unittest.TestCase):
         text = README.read_text(encoding="utf-8")
         answer = text.split("<b>Is this safe? Can it brick the TV?</b>", 1)[1].split("</details>", 1)[0]
         answer = re.sub(r"\s+", " ", answer)
-        for token in ("factory reset from its recovery menu", "docs/faq.md#is-this-safe-can-it-brick-the-tv"):
+        for token in ("factory reset from its recovery menu", "faq.md#is-this-safe-can-it-brick-the-tv"):
             with self.subTest(token=token):
                 self.assertIn(token, answer)
         faq = FAQ.read_text(encoding="utf-8")

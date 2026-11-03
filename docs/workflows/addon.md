@@ -21,8 +21,7 @@
 6. Add one row to the table in `addons/README.md` linking `<name>/`, with the TV it was tested on, the
    permissions its manifest asks for in the Permissions column (in the words the table already uses:
    "start at boot", "overlay"), and the screenshot in the row's Screenshot column. `tests/test_addons.py`
-   checks the row and the folder, and `tests/test_addon_permissions_index.py` holds the add-on's own page
-   and this column to the manifest.
+   checks the row and the folder.
 7. No APKs in the repo. `tests/test_addons.py` checks all of this; `.github/workflows/addons.yml` builds the
    add-ons that changed with `./gradlew --no-daemon assembleRelease`.
 
