@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520" role="img" aria-labelledby="t d">
+  <title id="t">Teduh TV</title>
+  <desc id="d">TV Android yang bersih, ringan, dan tenang: debloat, launcher ringan, jadwal sholat Kemenag, foto sendiri.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#041417"/>
+      <stop offset="0.55" stop-color="#0a2a2e"/>
+      <stop offset="1" stop-color="#123c3a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.32" r="0.45">
+      <stop offset="0" stop-color="#2bb673" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2bb673" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f3236"/>
+      <stop offset="1" stop-color="#071a1c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="520" fill="url(#sky)"/>
+  <rect width="1600" height="520" fill="url(#glow)"/>
+  <!-- soft hills -->
+  <path d="M0 430 C 260 380 480 450 760 410 C 1040 370 1300 440 1600 400 L1600 520 L0 520 Z" fill="#0d3331" opacity="0.8"/>
+  <path d="M0 470 C 300 440 560 490 860 460 C 1160 430 1380 480 1600 455 L1600 520 L0 520 Z" fill="#082423"/>
+  <!-- crescent -->
+  <mask id="cres"><rect x="-60" y="-60" width="120" height="120" fill="#fff"/><circle r="36" cx="16" cy="-9" fill="#000"/></mask>
+  <g transform="translate(1440 92)"><circle r="36" fill="#e9f5ee" mask="url(#cres)"/></g>
+  <!-- TV frame -->
+  <g transform="translate(1000 175)">
+    <rect x="0" y="0" width="460" height="260" rx="18" fill="#020909" stroke="#2f5b58" stroke-width="3"/>
+    <rect x="12" y="12" width="436" height="236" rx="10" fill="url(#screen)"/>
+    <text x="34" y="62" fill="#e9f5ee" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="300">10:30</text>
+    <text x="140" y="60" fill="#9cc7bd" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" letter-spacing="2">SELASA · 3 NOVEMBER</text>
+    <rect x="34" y="150" width="88" height="62" rx="10" fill="#e9f5ee" opacity="0.92"/>
+    <rect x="134" y="150" width="88" height="62" rx="10" fill="#2bb673"/>
+    <rect x="234" y="150" width="88" height="62" rx="10" fill="#e9f5ee" opacity="0.55"/>
+    <rect x="334" y="150" width="88" height="62" rx="10" fill="#e9f5ee" opacity="0.35"/>
+    <rect x="128" y="144" width="100" height="74" rx="14" fill="none" stroke="#8fe3b8" stroke-width="3"/>
+    <rect x="200" y="260" width="60" height="18" fill="#020909"/>
+  </g>
+  <!-- title -->
+  <text x="110" y="215" fill="#f2fbf6" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="104" font-weight="600" letter-spacing="-2">Teduh TV</text>
+  <text x="114" y="275" fill="#b9dccf" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="300">TV Android yang bersih, ringan, dan tenang.</text>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#dff3ea">
+    <rect x="112" y="318" width="132" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#4f8a80"/>
+    <text x="178" y="347" text-anchor="middle">Debloat</text>
+    <rect x="258" y="318" width="210" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#4f8a80"/>
+    <text x="363" y="347" text-anchor="middle">Launcher ringan</text>
+    <rect x="482" y="318" width="190" height="44" rx="22" fill="#2bb673" fill-opacity="0.22" stroke="#2bb673"/>
+    <text x="577" y="347" text-anchor="middle">Jadwal sholat</text>
+    <rect x="686" y="318" width="180" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#4f8a80"/>
+    <text x="776" y="347" text-anchor="middle">Foto sendiri</text>
+  </g>
+</svg>
